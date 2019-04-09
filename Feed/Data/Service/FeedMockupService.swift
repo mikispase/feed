@@ -11,12 +11,10 @@ import RealmSwift
 import SwiftyJSON
 
 class FeedMockupService: FeedService {
-  
-    
-    func getAllFeeds() -> Results<FeedRealm> {
-        
+   
+    func getAllFeeds(onComplete: @escaping Completition, onError: @escaping ErrorComplete) {
         let realm = try! Realm()
-
+        
         let location = "json"
         let fileType = "json"
         if let path = Bundle.main.path(forResource: location, ofType: fileType) {
@@ -56,7 +54,7 @@ class FeedMockupService: FeedService {
                         try! realm.write {
                             let results = realm.objects(FeedRealm.self).filter("eventId == %@",test.eventId!)
                             if (results.count == 0)
-{
+                            {
                                 realm.add(myFeeed)
                             }
                         }
@@ -67,12 +65,11 @@ class FeedMockupService: FeedService {
             }}
         
         let results = realm.objects(FeedRealm.self)
-        return results
+        onComplete(results)
     }
     
-
-    func getAllFeedsNetwork(onComplete: @escaping Completition, onError: @escaping ErrorComplete) {
-        
+    func saveFeeds(feeds: Array<Feeds>, onComplete: @escaping Completition, onError: @escaping ErrorComplete) {
     }
+
     
 }

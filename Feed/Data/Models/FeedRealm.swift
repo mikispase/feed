@@ -8,6 +8,7 @@
 
 import Foundation
 import RealmSwift
+import SwiftyJSON
 
 class FeedRealm : Object {
      @objc dynamic var stock: String?

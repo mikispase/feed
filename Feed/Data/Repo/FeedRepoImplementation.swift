@@ -23,7 +23,12 @@ class FeedRepoImplementation: FeedRepo {
     }
 
     func getFeeds(onComplete: @escaping Completition, onError: @escaping ErrorComplete) {
-        let feeds = mockupFeedSerice.getAllFeeds()
-        onComplete(feeds)
+        networkeedSerice.getAllFeeds(onComplete: { (result) in
+            let feeds = result as! Array<Feeds>
+            self.databaseFeedSerice.saveFeeds(feeds: feeds, onComplete: onComplete, onError: onError)
+
+        }, onError: { (error) in
+            self.databaseFeedSerice.getAllFeeds(onComplete: onComplete, onError: onError)
+        })
     }
 }

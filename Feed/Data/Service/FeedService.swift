@@ -10,6 +10,7 @@ import Foundation
 import RealmSwift
 
 protocol FeedService {
-    func getAllFeeds() -> Results<FeedRealm>
-    func getAllFeedsNetwork(onComplete: @escaping Completition, onError: @escaping ErrorComplete) 
+    func getAllFeeds(onComplete: @escaping Completition, onError: @escaping ErrorComplete)
+    
+    func saveFeeds(feeds : Array<Feeds>, onComplete: @escaping Completition, onError: @escaping ErrorComplete)
 }

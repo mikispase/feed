@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		434A6368225CA149006A1FD0 /* ArtistCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 434A6367225CA149006A1FD0 /* ArtistCollectionViewCell.swift */; };
 		434A636C225CBF5A006A1FD0 /* placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = 434A636B225CBF5A006A1FD0 /* placeholder.png */; };
+		434A636F225CD119006A1FD0 /* DatabaseMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 434A636E225CD119006A1FD0 /* DatabaseMapper.swift */; };
 		436668EC225BB01800F64CD1 /* FeedRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 436668EB225BB01800F64CD1 /* FeedRealm.swift */; };
 		436668EE225BBE4300F64CD1 /* AllFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 436668ED225BBE4300F64CD1 /* AllFeedViewController.swift */; };
 		436668F0225BBE5600F64CD1 /* FavoriteFeedsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 436668EF225BBE5600F64CD1 /* FavoriteFeedsViewController.swift */; };
@@ -42,6 +43,7 @@
 		046E2187AC5823CD0BF0F626 /* Pods-Feed.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Feed.release.xcconfig"; path = "Target Support Files/Pods-Feed/Pods-Feed.release.xcconfig"; sourceTree = "<group>"; };
 		434A6367225CA149006A1FD0 /* ArtistCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistCollectionViewCell.swift; sourceTree = "<group>"; };
 		434A636B225CBF5A006A1FD0 /* placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = placeholder.png; sourceTree = "<group>"; };
+		434A636E225CD119006A1FD0 /* DatabaseMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseMapper.swift; sourceTree = "<group>"; };
 		436668EB225BB01800F64CD1 /* FeedRealm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedRealm.swift; sourceTree = "<group>"; };
 		436668ED225BBE4300F64CD1 /* AllFeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllFeedViewController.swift; sourceTree = "<group>"; };
 		436668EF225BBE5600F64CD1 /* FavoriteFeedsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteFeedsViewController.swift; sourceTree = "<group>"; };
@@ -86,6 +88,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		434A636D225CD103006A1FD0 /* Database */ = {
+			isa = PBXGroup;
+			children = (
+				434A636E225CD119006A1FD0 /* DatabaseMapper.swift */,
+			);
+			path = Database;
+			sourceTree = "<group>";
+		};
 		43E3EB51225B6DD200C78EB1 = {
 			isa = PBXGroup;
 			children = (
@@ -201,6 +211,7 @@
 		43F70298225C021600F89B0F /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				434A636D225CD103006A1FD0 /* Database */,
 				43F7029F225C036700F89B0F /* FeedService.swift */,
 				43F702A1225C03C300F89B0F /* FeedNetworkService.swift */,
 				43F702A3225C049000F89B0F /* FeedMockupService.swift */,
@@ -395,6 +406,7 @@
 				43F70294225BFE0200F89B0F /* Extensions.swift in Sources */,
 				436668F3225BC58100F64CD1 /* FeedCell.swift in Sources */,
 				43F702A0225C036700F89B0F /* FeedService.swift in Sources */,
+				434A636F225CD119006A1FD0 /* DatabaseMapper.swift in Sources */,
 				43E3EB87225B994E00C78EB1 /* Feeds.swift in Sources */,
 				43F70296225C001300F89B0F /* AllFeedsContract.swift in Sources */,
 				434A6368225CA149006A1FD0 /* ArtistCollectionViewCell.swift in Sources */,

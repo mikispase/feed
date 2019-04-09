@@ -8,16 +8,27 @@
 
 import Foundation
 import RealmSwift
+import SwiftyJSON
 
 class FeedNetworkService : FeedService {
    
-    func getAllFeeds() -> Results<FeedRealm> {
-        let realm = try! Realm()
-        let results = realm.objects(FeedRealm.self)
-        return results
+    func getAllFeeds(onComplete: @escaping Completition, onError: @escaping ErrorComplete) {
+        serverClientBaseAny(_url: SERVERBASEURL, params: nil, httpMethid: .get, onComplete: { (result) in
+            var feeds = Array<Feeds>()
+            let arr = result as! Array<Dictionary<String, String>>
+            for item in arr {
+                let item1 = item as Dictionary<String, String>
+                let feed = Feeds(object: item1)
+                feeds.append(feed)
+            }
+            
+            onComplete(feeds)
+        }) { (error : Error) in
+            onError(error)
+        }
     }
     
-    func getAllFeedsNetwork(onComplete: @escaping Completition, onError: @escaping ErrorComplete) {
-        ServerInvoker_allFeeds(onComplete: onComplete, onError: onError)
+    func saveFeeds(feeds: Array<Feeds>, onComplete: @escaping Completition, onError: @escaping ErrorComplete) {
     }
+    
 }

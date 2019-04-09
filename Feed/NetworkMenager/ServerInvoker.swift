@@ -20,8 +20,9 @@ func prettyPrint(with json: [String:Any]) -> String{
 }
 
 func ServerInvoker_allFeeds(onComplete:@escaping CompletitionArray, onError:@escaping ErrorComplete){
+    
+    
     serverClientBaseAny(_url: SERVERBASEURL, params: nil, httpMethid: .get, onComplete: { (result) in
-        
         print(result)
         onComplete([result])
     }) { (error : Error) in
