@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		434A6368225CA149006A1FD0 /* ArtistCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 434A6367225CA149006A1FD0 /* ArtistCollectionViewCell.swift */; };
 		436668EC225BB01800F64CD1 /* FeedRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 436668EB225BB01800F64CD1 /* FeedRealm.swift */; };
 		436668EE225BBE4300F64CD1 /* AllFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 436668ED225BBE4300F64CD1 /* AllFeedViewController.swift */; };
 		436668F0225BBE5600F64CD1 /* FavoriteFeedsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 436668EF225BBE5600F64CD1 /* FavoriteFeedsViewController.swift */; };
@@ -38,6 +39,7 @@
 
 /* Begin PBXFileReference section */
 		046E2187AC5823CD0BF0F626 /* Pods-Feed.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Feed.release.xcconfig"; path = "Target Support Files/Pods-Feed/Pods-Feed.release.xcconfig"; sourceTree = "<group>"; };
+		434A6367225CA149006A1FD0 /* ArtistCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistCollectionViewCell.swift; sourceTree = "<group>"; };
 		436668EB225BB01800F64CD1 /* FeedRealm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedRealm.swift; sourceTree = "<group>"; };
 		436668ED225BBE4300F64CD1 /* AllFeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllFeedViewController.swift; sourceTree = "<group>"; };
 		436668EF225BBE5600F64CD1 /* FavoriteFeedsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteFeedsViewController.swift; sourceTree = "<group>"; };
@@ -169,6 +171,7 @@
 			children = (
 				436668F2225BC58100F64CD1 /* FeedCell.xib */,
 				436668F1225BC58100F64CD1 /* FeedCell.swift */,
+				434A6367225CA149006A1FD0 /* ArtistCollectionViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -390,6 +393,7 @@
 				43F702A0225C036700F89B0F /* FeedService.swift in Sources */,
 				43E3EB87225B994E00C78EB1 /* Feeds.swift in Sources */,
 				43F70296225C001300F89B0F /* AllFeedsContract.swift in Sources */,
+				434A6368225CA149006A1FD0 /* ArtistCollectionViewCell.swift in Sources */,
 				436668EC225BB01800F64CD1 /* FeedRealm.swift in Sources */,
 				43F7029B225C025900F89B0F /* FeedRepo.swift in Sources */,
 			);

@@ -32,6 +32,7 @@ class FeedDetailsViewController: UIViewController , UITextFieldDelegate {
     @IBOutlet var label9: UILabel!
     @IBOutlet var label10: UILabel!
     
+    @IBOutlet var colectionView: UICollectionView!
     
     lazy var favoriteBarButton: UIBarButtonItem = {
         UIBarButtonItem.init(image: UIImage(named: "big"),
@@ -66,6 +67,10 @@ class FeedDetailsViewController: UIViewController , UITextFieldDelegate {
         
         labels()
         
+        colectionView.delegate = self
+        colectionView.dataSource = self
+
+        colectionView.reloadData()
     }
     
     func changeBarButtonImage(){
@@ -107,16 +112,58 @@ class FeedDetailsViewController: UIViewController , UITextFieldDelegate {
     func labels(){
         label1.text = feedRealm.stock
         label2.text = feedRealm.artistID
-        label3.text = feedRealm.eventTime
-        label4.text = feedRealm.eventDate
         label5.text = feedRealm.venueName
         label6.text = feedRealm.artistTourName
         label7.text = feedRealm.venueCountry
         label8.text = feedRealm.artistName
-        label9.text = feedRealm.venueStreet
-        label10.text = feedRealm.eventId
     }
 }
 
+// MARK: - UICollectionViewDataSource
+extension FeedDetailsViewController: UICollectionViewDataSource, UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        let realm = try! Realm()
+        let results = realm.objects(FeedRealm.self).filter("artistName == %@", feedRealm.artistName)
+        return results.count
+    }
+    
+    //1
+     func numberOfSections(in collectionView: UICollectionView) -> Int {
+        
+//        let realm = try! Realm()
+//        let results = realm.objects(FeedRealm.self).filter("artistName == %@", feedRealm.artistName)
+        
+        return 1
+    }
+    
+     func collectionView(
+        _ collectionView: UICollectionView,
+        cellForItemAt indexPath: IndexPath
+        ) -> UICollectionViewCell {
+        
+        let realm = try! Realm()
+        let results = realm.objects(FeedRealm.self).filter("artistName == %@", feedRealm.artistName)
+        
+        let feed = results[indexPath.row]
+        
+        let cell = collectionView
+            .dequeueReusableCell(withReuseIdentifier: "ColectionCell", for: indexPath) as! ArtistCollectionViewCell
+        cell.imageViewArtist.sd_setImage(with: URL(string: feed.venueImageUrl!), placeholderImage: UIImage(named: "placeholder.png"))
+        cell.nameArtist.text = feed.eventDate
+        // Configure the cell
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        let realm = try! Realm()
+        let results = realm.objects(FeedRealm.self).filter("artistName == %@", feedRealm.artistName)
+        
+         feedRealm = results[indexPath.row]
+        
+        self.viewDidLoad()
+    }
+    
+}
 
 
