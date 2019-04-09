@@ -10,9 +10,6 @@ import UIKit
 import RealmSwift
 import SDWebImage
 
-
-
-
 protocol UpdateFeed {
     func updateFeedReloadData()
 }
@@ -84,7 +81,8 @@ class FeedDetailsViewController: UIViewController , UITextFieldDelegate {
             try! realm.write {
                 feedRealm.venueName = textField.text
                 delegate?.updateFeedReloadData()
-                addObserverForReloadData()                
+                addObserverForReloadData()
+                label5.text = textField.text
             }
         }
     }
@@ -110,10 +108,8 @@ class FeedDetailsViewController: UIViewController , UITextFieldDelegate {
     }
     
     func labels(){
-        label1.text = feedRealm.stock
         label2.text = feedRealm.artistID
         label5.text = feedRealm.venueName
-        label6.text = feedRealm.artistTourName
         label7.text = feedRealm.venueCountry
         label8.text = feedRealm.artistName
     }
@@ -132,10 +128,7 @@ extension FeedDetailsViewController: UICollectionViewDataSource, UICollectionVie
         return 1
     }
     
-    func collectionView(
-        _ collectionView: UICollectionView,
-        cellForItemAt indexPath: IndexPath
-        ) -> UICollectionViewCell {
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let realm = try! Realm()
         let results = realm.objects(FeedRealm.self).filter("artistName == %@", feedRealm.artistName!)
@@ -149,12 +142,9 @@ extension FeedDetailsViewController: UICollectionViewDataSource, UICollectionVie
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
         let realm = try! Realm()
         let results = realm.objects(FeedRealm.self).filter("artistName == %@", feedRealm.artistName!)
-        
         feedRealm = results[indexPath.row]
-        
         self.viewDidLoad()
     }
     

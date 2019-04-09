@@ -41,7 +41,7 @@ class FavoriteFeedsViewController: UIViewController,UITableViewDataSource,UITabl
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 77
+        return 125
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

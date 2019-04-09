@@ -180,7 +180,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Feed/ViewControleers/AllFeeds/AllFeedViewController.swift"
-            timestampString = "576497012.985888"
+            timestampString = "576505378.408831"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "36"
@@ -196,7 +196,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Feed/ViewControleers/AllFeeds/AllFeedViewController.swift"
-            timestampString = "576497012.98599"
+            timestampString = "576505378.4089"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "24"
@@ -324,28 +324,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Feed/ViewControleers/AllFeeds/AllFeedViewController.swift"
-            timestampString = "576497012.986111"
+            timestampString = "576505378.409029"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "74"
             endingLineNumber = "74"
             landmarkName = "showAllFeed(feeds:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Feed/ViewControleers/FeedDetails/FeedDetailsViewController.swift"
-            timestampString = "576497012.98616"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "137"
-            endingLineNumber = "137"
-            landmarkName = "collectionView(_:cellForItemAt:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
