@@ -150,7 +150,6 @@ class FeedDetailsViewController: UIViewController , UITextFieldDelegate {
             self.label7.center.x += self.view.bounds.width
             self.label8.center.x += self.view.bounds.width
 
-            
             self.label2.text = self.feedRealm.artistID
             self.label5.text = self.feedRealm.venueName
             self.label7.text = self.feedRealm.venueCountry
@@ -158,9 +157,6 @@ class FeedDetailsViewController: UIViewController , UITextFieldDelegate {
             
             self.view.layoutIfNeeded()
         }, completion: nil)
-        
-        
-
     }
 }
 
