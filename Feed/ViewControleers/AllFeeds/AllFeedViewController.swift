@@ -29,6 +29,9 @@ class AllFeedViewController: UIViewController,UITableViewDataSource,UITableViewD
         
         presenter?.bindView(view: self)
         presenter?.getAllFeeds(forceGet: true)
+        
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.estimatedRowHeight = 125
     }
 
     func initPresenter() {
@@ -52,7 +55,7 @@ class AllFeedViewController: UIViewController,UITableViewDataSource,UITableViewD
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 125
+        return UITableView.automaticDimension
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

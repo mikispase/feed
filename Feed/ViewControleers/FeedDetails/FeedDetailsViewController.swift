@@ -57,43 +57,55 @@ class FeedDetailsViewController: UIViewController , UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Do any additional setup after loading the view.
-        
-        print(feedRealm)
         self.hideKeyboardWhenTappedAround()
         
         feedName.delegate = self
-        
-        feedName.text = feedRealm.venueName
-        
+    
         navigationItem.rightBarButtonItem = favoriteBarButton
-        
+
         changeBarButtonImage()
-        
-        feedImage.sd_setImage(with: URL(string: feedRealm.venueImageUrl!), placeholderImage: UIImage(named: "placeholder.png"))
-        
-        labels()
         
         colectionView.delegate = self
         colectionView.dataSource = self
         
+        tableView.tableHeaderView = headerView
+        
+        setupView()
+    }
+    
+    
+    func setupView() {
+        
+        // Setup Location
         let restaurantLocation = CLLocationCoordinate2D(latitude: (feedRealm.venueLat! as NSString).doubleValue, longitude:(feedRealm.vanueLong! as NSString).doubleValue)
-        
-        
         let span = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta:0.05)
         let region = MKCoordinateRegion(center: restaurantLocation, span: span)
         mapView.setRegion(region, animated: true)
-        
         let annotation = MKPointAnnotation()
         annotation.coordinate = restaurantLocation
         annotation.title =  feedRealm.venueStreet
         annotation.subtitle = feedRealm.venueName
         mapView.addAnnotation(annotation)
         
-        tableView.tableHeaderView = headerView
+        // Navigation Image
+        let view = UIView(frame:CGRect(x: 0, y: 0, width: 30, height: 30))
+        let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
+        imageView.sd_setImage(with: URL(string: feedRealm.artistImage!), placeholderImage: UIImage(named: "placeholder.png"))
+        view.addSubview(imageView)
+        self.navigationItem.titleView = view
         
+        labels()
+
+        feedImage.sd_setImage(with: URL(string: feedRealm.venueImageUrl!), placeholderImage: UIImage(named: "placeholder.png"))
+        
+        
+        feedName.text = feedRealm.venueName
+
         colectionView.reloadData()
+        
+        print(feedRealm)
     }
+    
     
     func changeBarButtonImage(){
         favoriteBarButton.image = UIImage(named: (feedRealm.isMyFavorite == "true") ? "selected" : "not-selected" )!.withRenderingMode(.alwaysOriginal)
@@ -170,7 +182,7 @@ extension FeedDetailsViewController: UICollectionViewDataSource, UICollectionVie
         let realm = try! Realm()
         let results = realm.objects(FeedRealm.self).filter("artistName == %@", feedRealm.artistName!)
         feedRealm = results[indexPath.row]
-        self.viewDidLoad()
+         setupView()
     }
     
 }

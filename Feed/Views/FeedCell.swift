@@ -15,11 +15,19 @@ class FeedCell: UITableViewCell {
     
     @IBOutlet var lblDate: UILabel!
     
+    @IBOutlet var artistImage: UIImageView!
+    
     var index: NSIndexPath!
     
     override func awakeFromNib(){
         super.awakeFromNib()
         // Initialization code
+        
+        artistImage.layer.borderWidth = 1.0
+        artistImage.layer.masksToBounds = false
+        artistImage.layer.borderColor = UIColor.white.cgColor
+        artistImage.layer.cornerRadius = artistImage.frame.size.width / 2
+        artistImage.clipsToBounds = true
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -32,5 +40,6 @@ class FeedCell: UITableViewCell {
         index = indexPath
         lblDate.text = feeds.eventDate
         lblName.text = feeds.venueName
+         artistImage.sd_setImage(with: URL(string: feeds.artistImage!), placeholderImage: UIImage(named: "placeholder.png"))
     }
 }
