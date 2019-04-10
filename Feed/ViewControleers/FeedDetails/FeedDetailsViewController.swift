@@ -20,8 +20,11 @@ class FeedDetailsViewController: UIViewController , UITextFieldDelegate {
     
     var delegate:UpdateFeed?
     
+    @IBOutlet var tableView: UITableView!
+    
     let locationManager = CLLocationManager()
 
+    @IBOutlet var headerView: UIView!
     
     @IBOutlet var label1: UILabel!
     @IBOutlet var label2: UILabel!
@@ -87,6 +90,7 @@ class FeedDetailsViewController: UIViewController , UITextFieldDelegate {
         annotation.subtitle = feedRealm.venueName
         mapView.addAnnotation(annotation)
         
+        tableView.tableHeaderView = headerView
         
         colectionView.reloadData()
     }
