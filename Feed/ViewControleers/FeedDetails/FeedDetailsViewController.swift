@@ -20,6 +20,9 @@ class FeedDetailsViewController: UIViewController , UITextFieldDelegate {
     
     var delegate:UpdateFeed?
     
+    let annotation = MKPointAnnotation()
+
+    
     @IBOutlet var tableView: UITableView!
     
     let locationManager = CLLocationManager()
@@ -81,7 +84,6 @@ class FeedDetailsViewController: UIViewController , UITextFieldDelegate {
         let span = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta:0.05)
         let region = MKCoordinateRegion(center: restaurantLocation, span: span)
         mapView.setRegion(region, animated: true)
-        let annotation = MKPointAnnotation()
         annotation.coordinate = restaurantLocation
         annotation.title =  feedRealm.venueStreet
         annotation.subtitle = feedRealm.venueName
@@ -120,6 +122,7 @@ class FeedDetailsViewController: UIViewController , UITextFieldDelegate {
                 delegate?.updateFeedReloadData()
                 addObserverForReloadData()
                 label5.text = textField.text
+                annotation.subtitle = textField.text
             }
         }
     }
