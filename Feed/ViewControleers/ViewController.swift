@@ -17,6 +17,8 @@ class ViewController: UIViewController {
     
     @IBOutlet var segmentControl: UISegmentedControl!
     
+
+    
     var segmentedController: UISegmentedControl!
     
     override func viewDidLoad() {
@@ -34,7 +36,6 @@ class ViewController: UIViewController {
         segmentedController.addTarget(self, action: #selector(segmentControlPressed(_:)), for: .valueChanged)
         segmentedController.tintColor = .init(hexString: "#EF4351")
         segmentedController.selectedSegmentIndex = 0
-        
     }
     @IBAction func segmentControlPressed(_ sender: UISegmentedControl) {
         
@@ -53,6 +54,5 @@ class ViewController: UIViewController {
         
     }
 }
-
 
 

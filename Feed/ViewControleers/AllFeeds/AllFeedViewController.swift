@@ -11,13 +11,18 @@ import RealmSwift
 import SwiftyJSON
 import ProgressHUD
 
-class AllFeedViewController: UIViewController,UITableViewDataSource,UITableViewDelegate , UpdateFeed, AllFeedsView{
- 
+class AllFeedViewController: UIViewController,UITableViewDataSource,UITableViewDelegate , UpdateFeed, AllFeedsView, UISearchResultsUpdating{
+   
     @IBOutlet var tableView: UITableView!
 
     var feeds: Results<FeedRealm>?
+    
+    var filteredFeed: Results<FeedRealm>?
+
     var presenter: AllFeedPresenter?
     
+    var resultSearchController = UISearchController()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -32,6 +37,18 @@ class AllFeedViewController: UIViewController,UITableViewDataSource,UITableViewD
         
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 125
+        
+        self.resultSearchController = ({
+            let controller = UISearchController(searchResultsController: nil)
+            controller.searchResultsUpdater = self
+            controller.dimsBackgroundDuringPresentation = false
+            controller.searchBar.sizeToFit()
+            controller.searchBar.barTintColor = .white
+            controller.searchBar.backgroundColor = .clear
+            self.tableView.tableHeaderView = controller.searchBar
+            return controller
+        })()
+      
     }
 
     func initPresenter() {
@@ -44,12 +61,20 @@ class AllFeedViewController: UIViewController,UITableViewDataSource,UITableViewD
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return feeds?.count ?? 0
+        if self.resultSearchController.isActive {
+            return filteredFeed!.count
+        }else{
+            return feeds?.count ?? 0
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell =  tableView.dequeueReusableCell(withIdentifier: "FeedCell") as! FeedCell
-        cell.populateDataForCell(feeds: feeds![indexPath.row], indexPath: indexPath as NSIndexPath)
+        if self.resultSearchController.isActive {
+            cell.populateDataForCell(feeds: filteredFeed![indexPath.row], indexPath: indexPath as NSIndexPath)
+        } else {
+            cell.populateDataForCell(feeds: feeds![indexPath.row], indexPath: indexPath as NSIndexPath)
+        }
         cell.selectionStyle = .none
         return cell
     }
@@ -60,10 +85,22 @@ class AllFeedViewController: UIViewController,UITableViewDataSource,UITableViewD
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let vc = storyboard?.instantiateViewController(withIdentifier: "FeedDetailsViewController") as! FeedDetailsViewController
-        vc.feedRealm = feeds![indexPath.row]
+        vc.feedRealm =  self.resultSearchController.isActive ? (filteredFeed?[indexPath.row])! :   feeds![indexPath.row]
         vc.delegate = self
+        resultSearchController.isActive = false
         navigationController?.pushViewController(vc, animated: true)
+
     }
+
+    func updateSearchResults(for searchController: UISearchController) {
+        print("updateSearchResults")
+        let realm = try! Realm()
+        let searchString = searchController.searchBar.text!
+        let results = realm.objects(FeedRealm.self).filter("venueName CONTAINS[c]'\(searchString)' OR eventDate CONTAINS[c]'\(searchString)' OR artistName CONTAINS[c]'\(searchString)'")
+        filteredFeed = results
+        self.tableView.reloadData()
+    }
+    
     
     func updateFeedReloadData() {
        self.tableView.reloadData()
@@ -88,5 +125,6 @@ class AllFeedViewController: UIViewController,UITableViewDataSource,UITableViewD
 }
 
 
-    
+
+
 
