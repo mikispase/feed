@@ -20,15 +20,14 @@ class FeedDetailsViewController: UIViewController , UITextFieldDelegate {
     
     var delegate:UpdateFeed?
     
+    var feedRealm = FeedRealm()
+    
     let annotation = MKPointAnnotation()
 
-    
-    @IBOutlet var tableView: UITableView!
-    
     let locationManager = CLLocationManager()
 
+    @IBOutlet var tableView: UITableView!
     @IBOutlet var headerView: UIView!
-    
     @IBOutlet var label1: UILabel!
     @IBOutlet var label2: UILabel!
     @IBOutlet var label3: UILabel!
@@ -39,10 +38,11 @@ class FeedDetailsViewController: UIViewController , UITextFieldDelegate {
     @IBOutlet var label8: UILabel!
     @IBOutlet var label9: UILabel!
     @IBOutlet var label10: UILabel!
-    
     @IBOutlet var colectionView: UICollectionView!
-    
     @IBOutlet var mapView: MKMapView!
+    @IBOutlet var feedImage: UIImageView!
+    @IBOutlet var feedName: UITextField!
+    
     
     lazy var favoriteBarButton: UIBarButtonItem = {
         UIBarButtonItem.init(image: UIImage(named: "big"),
@@ -50,12 +50,6 @@ class FeedDetailsViewController: UIViewController , UITextFieldDelegate {
                              target: self,
                              action: #selector(action))
     }()
-    
-    @IBOutlet var feedImage: UIImageView!
-    
-    @IBOutlet var feedName: UITextField!
-    
-    var feedRealm = FeedRealm()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -173,7 +167,6 @@ extension FeedDetailsViewController: UICollectionViewDataSource, UICollectionVie
         let realm = try! Realm()
         let results = realm.objects(FeedRealm.self).filter("artistName == %@", feedRealm.artistName!)
         let feed = results[indexPath.row]
-        
         let cell = collectionView
             .dequeueReusableCell(withReuseIdentifier: "ColectionCell", for: indexPath) as! ArtistCollectionViewCell
         cell.imageViewArtist.sd_setImage(with: URL(string: feed.venueImageUrl!), placeholderImage: UIImage(named: "placeholder.png"))
@@ -186,6 +179,11 @@ extension FeedDetailsViewController: UICollectionViewDataSource, UICollectionVie
         let results = realm.objects(FeedRealm.self).filter("artistName == %@", feedRealm.artistName!)
         feedRealm = results[indexPath.row]
          setupView()
+        scrollToFirstRow()
+    }
+    func scrollToFirstRow() {
+        self.tableView.scrollRectToVisible(CGRect(x: 0, y: 0, width: 1, height: 1), animated: true)
+
     }
     
 }

@@ -56,6 +56,18 @@ class FavoriteFeedsViewController: UIViewController,UITableViewDataSource,UITabl
         navigationController?.pushViewController(vc, animated: true)
     }
     
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == UITableViewCell.EditingStyle.delete {
+            let realm = try! Realm()
+            try! realm.write {
+                let results = realm.objects(FeedRealm.self).filter("isMyFavorite == 'true'")
+                let feedRealm = results[indexPath.row]
+                feedRealm.isMyFavorite = "false"
+                tableView.deleteRows(at: [indexPath], with: UITableView.RowAnimation.automatic)
+            }
+        }
+    }
+    
     func updateFeedReloadData() {
         tableView.reloadData()
     }

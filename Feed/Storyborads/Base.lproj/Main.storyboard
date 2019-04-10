@@ -18,28 +18,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Elw-aP-CrM">
-                                <rect key="frame" x="16" y="80" width="343" height="28"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="27" id="O0e-d9-8hs"/>
-                                </constraints>
-                                <segments>
-                                    <segment title="All Feeds"/>
-                                    <segment title="Favorite"/>
-                                </segments>
-                                <color key="tintColor" red="0.93725490199999995" green="0.26274509800000001" blue="0.31764705879999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <connections>
-                                    <action selector="segmentControlPressed:" destination="BYZ-38-t0r" eventType="valueChanged" id="dzb-9w-UFi"/>
-                                </connections>
-                            </segmentedControl>
                             <containerView opaque="NO" alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZXQ-4N-J20" userLabel="AllFeeds">
-                                <rect key="frame" x="0.0" y="123" width="375" height="544"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <connections>
                                     <segue destination="geC-VC-I8R" kind="embed" id="zNe-Hg-BIK"/>
                                 </connections>
                             </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3lU-mZ-Zgk" userLabel="FavoriteFeeds">
-                                <rect key="frame" x="0.0" y="123" width="375" height="544"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <connections>
                                     <segue destination="nWx-9P-xaW" kind="embed" id="q6s-q8-fwi"/>
                                 </connections>
@@ -51,13 +37,10 @@
                             <constraint firstItem="3lU-mZ-Zgk" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="5Nu-P7-VfN"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ZXQ-4N-J20" secondAttribute="trailing" id="7fE-mb-YMm"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="ZXQ-4N-J20" secondAttribute="bottom" id="7ss-ax-KMf"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Elw-aP-CrM" secondAttribute="trailing" constant="16" id="A1z-1H-YBw"/>
-                            <constraint firstItem="ZXQ-4N-J20" firstAttribute="top" secondItem="Elw-aP-CrM" secondAttribute="bottom" constant="16" id="XUL-yt-3as"/>
-                            <constraint firstItem="Elw-aP-CrM" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="16" id="Yku-6U-keH"/>
+                            <constraint firstItem="3lU-mZ-Zgk" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="Nbe-cT-1bq"/>
                             <constraint firstItem="ZXQ-4N-J20" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="cB7-M2-nIg"/>
-                            <constraint firstItem="Elw-aP-CrM" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="gkY-Hz-ZdQ"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="3lU-mZ-Zgk" secondAttribute="trailing" id="jZ8-UT-Qcr"/>
-                            <constraint firstItem="3lU-mZ-Zgk" firstAttribute="top" secondItem="Elw-aP-CrM" secondAttribute="bottom" constant="16" id="miH-ne-qfa"/>
+                            <constraint firstItem="ZXQ-4N-J20" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="xaR-Q6-FQl"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -65,7 +48,6 @@
                     <connections>
                         <outlet property="allFeedContentView" destination="ZXQ-4N-J20" id="F8L-Ft-3iK"/>
                         <outlet property="favoriteFeedContentView" destination="3lU-mZ-Zgk" id="x3p-sO-MEL"/>
-                        <outlet property="segmentControl" destination="Elw-aP-CrM" id="q2Q-QP-goe"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -95,11 +77,11 @@
             <objects>
                 <viewController storyboardIdentifier="AllFeedViewController" id="geC-VC-I8R" customClass="AllFeedViewController" customModule="Feed" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="xDi-yH-L5y">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="544"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="asK-7z-zLe">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="544"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
                                     <outlet property="dataSource" destination="geC-VC-I8R" id="2Og-vc-d07"/>
@@ -129,11 +111,11 @@
             <objects>
                 <viewController storyboardIdentifier="FavoriteFeedsViewController" id="nWx-9P-xaW" customClass="FavoriteFeedsViewController" customModule="Feed" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="CwP-eW-NWj">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="544"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="tIn-Wg-BCN">
-                                <rect key="frame" x="0.0" y="20" width="375" height="524"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="583"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
                                     <outlet property="dataSource" destination="nWx-9P-xaW" id="vWX-xq-Pqu"/>

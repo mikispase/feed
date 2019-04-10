@@ -17,6 +17,8 @@ class ViewController: UIViewController {
     
     @IBOutlet var segmentControl: UISegmentedControl!
     
+    var segmentedController: UISegmentedControl!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -24,6 +26,14 @@ class ViewController: UIViewController {
         title = "Feeds"
         favoriteFeedContentView.alpha = 0
         allFeedContentView.alpha = 1
+        
+        
+        let items = ["Feeds", "Favorite Feeds"]
+        segmentedController = UISegmentedControl(items: items)
+        navigationItem.titleView = segmentedController
+        segmentedController.addTarget(self, action: #selector(segmentControlPressed(_:)), for: .valueChanged)
+        segmentedController.tintColor = .init(hexString: "#EF4351")
+        segmentedController.selectedSegmentIndex = 0
         
     }
     @IBAction func segmentControlPressed(_ sender: UISegmentedControl) {
