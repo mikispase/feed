@@ -13,5 +13,4 @@ target 'Feed' do
    pod 'ProgressHUD'
    pod "KeyboardAvoidingView", '~> 4.0'
 
-
 end

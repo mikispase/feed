@@ -562,7 +562,8 @@
 			baseConfigurationReference = F57D72BDDD62254CF4B30FC9 /* Pods-Feed.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 3ER26337KX;
 				INFOPLIST_FILE = Feed/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
@@ -570,8 +571,9 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "Dimitar-Spasovski.Feed";
+				PRODUCT_BUNDLE_IDENTIFIER = "Dimitar-Spasovski.Feed1";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "feed dev";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -582,7 +584,8 @@
 			baseConfigurationReference = 046E2187AC5823CD0BF0F626 /* Pods-Feed.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 3ER26337KX;
 				INFOPLIST_FILE = Feed/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
@@ -590,8 +593,9 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "Dimitar-Spasovski.Feed";
+				PRODUCT_BUNDLE_IDENTIFIER = "Dimitar-Spasovski.Feed1";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "feed distribution";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
