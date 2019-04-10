@@ -12,11 +12,9 @@ import SDWebImage
 class FeedCell: UITableViewCell {
 
     @IBOutlet var lblName: UILabel!
-    
     @IBOutlet var lblDate: UILabel!
-    
     @IBOutlet var artistImage: UIImageView!
-    
+    @IBOutlet var lblArtistName: UILabel!
     var index: NSIndexPath!
     
     override func awakeFromNib(){
@@ -40,6 +38,7 @@ class FeedCell: UITableViewCell {
         index = indexPath
         lblDate.text = feeds.eventDate
         lblName.text = feeds.venueName
+        lblArtistName.text = feeds.artistName
          artistImage.sd_setImage(with: URL(string: feeds.artistImage!), placeholderImage: UIImage(named: "placeholder.png"))
     }
 }
