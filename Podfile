@@ -11,6 +11,6 @@ target 'Feed' do
    pod 'RealmSwift'
    pod 'SDWebImage'
    pod 'ProgressHUD'
-
+   pod 'GoogleMaps'
 
 end

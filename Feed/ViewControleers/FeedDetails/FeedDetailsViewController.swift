@@ -9,6 +9,8 @@
 import UIKit
 import RealmSwift
 import SDWebImage
+import MapKit
+import CoreLocation
 
 protocol UpdateFeed {
     func updateFeedReloadData()
@@ -17,6 +19,9 @@ protocol UpdateFeed {
 class FeedDetailsViewController: UIViewController , UITextFieldDelegate {
     
     var delegate:UpdateFeed?
+    
+    let locationManager = CLLocationManager()
+
     
     @IBOutlet var label1: UILabel!
     @IBOutlet var label2: UILabel!
@@ -30,6 +35,8 @@ class FeedDetailsViewController: UIViewController , UITextFieldDelegate {
     @IBOutlet var label10: UILabel!
     
     @IBOutlet var colectionView: UICollectionView!
+    
+    @IBOutlet var mapView: MKMapView!
     
     lazy var favoriteBarButton: UIBarButtonItem = {
         UIBarButtonItem.init(image: UIImage(named: "big"),
@@ -66,6 +73,20 @@ class FeedDetailsViewController: UIViewController , UITextFieldDelegate {
         
         colectionView.delegate = self
         colectionView.dataSource = self
+        
+        let restaurantLocation = CLLocationCoordinate2D(latitude: (feedRealm.venueLat! as NSString).doubleValue, longitude:(feedRealm.vanueLong! as NSString).doubleValue)
+        
+        
+        let span = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta:0.05)
+        let region = MKCoordinateRegion(center: restaurantLocation, span: span)
+        mapView.setRegion(region, animated: true)
+        
+        let annotation = MKPointAnnotation()
+        annotation.coordinate = restaurantLocation
+        annotation.title =  feedRealm.venueStreet
+        annotation.subtitle = feedRealm.venueName
+        mapView.addAnnotation(annotation)
+        
         
         colectionView.reloadData()
     }
