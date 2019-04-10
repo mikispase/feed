@@ -142,10 +142,25 @@ class FeedDetailsViewController: UIViewController , UITextFieldDelegate {
     }
     
     func labels(){
-        label2.text = feedRealm.artistID
-        label5.text = feedRealm.venueName
-        label7.text = feedRealm.venueCountry
-        label8.text = feedRealm.artistName
+        
+        UIView.animate(withDuration: 0.5, delay: 0, options: [.curveEaseOut], animations: {
+            
+            self.label2.center.x += self.view.bounds.width
+            self.label5.center.x += self.view.bounds.width
+            self.label7.center.x += self.view.bounds.width
+            self.label8.center.x += self.view.bounds.width
+
+            
+            self.label2.text = self.feedRealm.artistID
+            self.label5.text = self.feedRealm.venueName
+            self.label7.text = self.feedRealm.venueCountry
+            self.label8.text = self.feedRealm.artistName
+            
+            self.view.layoutIfNeeded()
+        }, completion: nil)
+        
+        
+
     }
 }
 
@@ -181,9 +196,10 @@ extension FeedDetailsViewController: UICollectionViewDataSource, UICollectionVie
          setupView()
         scrollToFirstRow()
     }
+    
+    
     func scrollToFirstRow() {
         self.tableView.scrollRectToVisible(CGRect(x: 0, y: 0, width: 1, height: 1), animated: true)
-
     }
     
 }
