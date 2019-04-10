@@ -1,5 +1,8 @@
 PODS:
   - Alamofire (4.8.2)
+  - APExtensions/ViewState (7.0.0)
+  - KeyboardAvoidingView (4.0.0):
+    - APExtensions/ViewState (>= 7.0.0)
   - ProgressHUD (2.60)
   - Realm (3.14.0):
     - Realm/Headers (= 3.14.0)
@@ -13,6 +16,7 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire (~> 4.7)
+  - KeyboardAvoidingView (~> 4.0)
   - ProgressHUD
   - RealmSwift
   - SDWebImage
@@ -21,6 +25,8 @@ DEPENDENCIES:
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Alamofire
+    - APExtensions
+    - KeyboardAvoidingView
     - ProgressHUD
     - Realm
     - RealmSwift
@@ -29,12 +35,14 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   Alamofire: ae5c501addb7afdbb13687d7f2f722c78734c2d3
+  APExtensions: c9553e646ff80cd721035cc5952929046900cf4b
+  KeyboardAvoidingView: edbfcb705eb522dc080e42d082cb3b28f79f9879
   ProgressHUD: 4e4efbaf4f5de8bd32e0c4c3b6644a90ea1a8c3e
   Realm: 221b25919bb5a010a3c597d707f8df3492dcd93a
   RealmSwift: 28f22dfa6a27b9a778cfb09471558b6afcf1022c
   SDWebImage: 3f3f0c02f09798048c47a5ed0a13f17b063572d8
   SwiftyJSON: c4bcba26dd9ec7a027fc8eade48e2c911f229e96
 
-PODFILE CHECKSUM: 6db2d6777dcd2af14b98dadf35a419fc9f01ccd0
+PODFILE CHECKSUM: b0d73b96755c81014f9182b049d898ba99d8770e
 
 COCOAPODS: 1.6.0.beta.2

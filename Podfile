@@ -11,5 +11,7 @@ target 'Feed' do
    pod 'RealmSwift'
    pod 'SDWebImage'
    pod 'ProgressHUD'
+   pod "KeyboardAvoidingView", '~> 4.0'
+
 
 end

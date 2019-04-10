@@ -12,4 +12,5 @@ class ArtistCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet var imageViewArtist: UIImageView!
     @IBOutlet var nameArtist: UILabel!
+    @IBOutlet var venueName: UILabel!
 }

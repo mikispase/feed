@@ -28,20 +28,23 @@ class FeedDetailsViewController: UIViewController , UITextFieldDelegate {
 
     @IBOutlet var tableView: UITableView!
     @IBOutlet var headerView: UIView!
-    @IBOutlet var label1: UILabel!
-    @IBOutlet var label2: UILabel!
-    @IBOutlet var label3: UILabel!
-    @IBOutlet var label4: UILabel!
-    @IBOutlet var label5: UILabel!
-    @IBOutlet var label6: UILabel!
-    @IBOutlet var label7: UILabel!
-    @IBOutlet var label8: UILabel!
-    @IBOutlet var label9: UILabel!
-    @IBOutlet var label10: UILabel!
     @IBOutlet var colectionView: UICollectionView!
     @IBOutlet var mapView: MKMapView!
     @IBOutlet var feedImage: UIImageView!
     @IBOutlet var feedName: UITextField!
+    @IBOutlet var artistImageView: UIImageView!
+    
+    
+    @IBOutlet var lblArtistName: UILabel!
+    @IBOutlet var lblDate: UILabel!
+    @IBOutlet var lblLocation: UILabel!
+    
+    
+    
+    
+    
+    
+    
     
     
     lazy var favoriteBarButton: UIBarButtonItem = {
@@ -87,17 +90,22 @@ class FeedDetailsViewController: UIViewController , UITextFieldDelegate {
         annotation.subtitle = feedRealm.venueName
         mapView.addAnnotation(annotation)
         
-        // Navigation Image
-        let view = UIView(frame:CGRect(x: 0, y: 0, width: 70, height: 50))
-        let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 70, height: 50))
-        imageView.sd_setImage(with: URL(string: feedRealm.artistImage!), placeholderImage: UIImage(named: "placeholder.png"))
-        imageView.contentMode = .scaleAspectFit
-        view.addSubview(imageView)
-        self.navigationItem.titleView = view
+
+        title = "Feed Details"
         
         labels()
 
         feedImage.sd_setImage(with: URL(string: feedRealm.venueImageUrl!), placeholderImage: UIImage(named: "placeholder.png"))
+        
+        
+          artistImageView.sd_setImage(with: URL(string: feedRealm.artistImage!), placeholderImage: UIImage(named: "placeholder.png"))
+        
+        artistImageView.layer.borderWidth = 1.0
+        artistImageView.layer.masksToBounds = false
+        artistImageView.layer.borderColor = UIColor.white.cgColor
+        artistImageView.layer.cornerRadius = artistImageView.frame.size.width / 2
+        artistImageView.clipsToBounds = true
+        
         
         
         feedName.text = feedRealm.venueName
@@ -120,7 +128,7 @@ class FeedDetailsViewController: UIViewController , UITextFieldDelegate {
                 feedRealm.venueName = textField.text
                 delegate?.updateFeedReloadData()
                 addObserverForReloadData()
-                label5.text = textField.text
+              //  label5.text = textField.text
                 annotation.subtitle = textField.text
             }
         }
@@ -147,24 +155,12 @@ class FeedDetailsViewController: UIViewController , UITextFieldDelegate {
     }
     
     func labels(){
-        
-        UIView.animate(withDuration: 0.5, delay: 0, options: [.curveEaseOut], animations: {
-            
-            self.label2.center.x += self.view.bounds.width
-            self.label5.center.x += self.view.bounds.width
-            self.label7.center.x += self.view.bounds.width
-            self.label8.center.x += self.view.bounds.width
+      lblArtistName.text = feedRealm.artistName
+        lblDate.text = feedRealm.eventDate! + " " + feedRealm.eventTime! + "h"
+        lblLocation.text = feedRealm.venueCountry! + " , " + feedRealm.venueCity! + " , " + feedRealm.venueStreet!
 
-            self.label2.text = self.feedRealm.artistID
-            self.label5.text = self.feedRealm.venueName
-            self.label7.text = self.feedRealm.venueCountry
-            self.label8.text = self.feedRealm.artistName
-            
-            self.view.layoutIfNeeded()
-        }, completion: nil)
     }
 }
-
 // MARK: - UICollectionViewDataSource
 extension FeedDetailsViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -187,6 +183,7 @@ extension FeedDetailsViewController: UICollectionViewDataSource, UICollectionVie
             .dequeueReusableCell(withReuseIdentifier: "ColectionCell", for: indexPath) as! ArtistCollectionViewCell
         cell.imageViewArtist.sd_setImage(with: URL(string: feed.venueImageUrl!), placeholderImage: UIImage(named: "placeholder.png"))
         cell.nameArtist.text = feed.eventDate
+        cell.venueName.text = feed.venueName
         return cell
     }
     
