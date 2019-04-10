@@ -68,6 +68,10 @@ class FeedDetailsViewController: UIViewController , UITextFieldDelegate {
         tableView.tableHeaderView = headerView
         
         setupView()
+        
+        
+        let gestureRecognizer = UITapGestureRecognizer(target: self, action:#selector(triggerTouchAction))
+        mapView.addGestureRecognizer(gestureRecognizer)
     }
     
     
@@ -84,9 +88,10 @@ class FeedDetailsViewController: UIViewController , UITextFieldDelegate {
         mapView.addAnnotation(annotation)
         
         // Navigation Image
-        let view = UIView(frame:CGRect(x: 0, y: 0, width: 30, height: 30))
-        let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
+        let view = UIView(frame:CGRect(x: 0, y: 0, width: 70, height: 50))
+        let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 70, height: 50))
         imageView.sd_setImage(with: URL(string: feedRealm.artistImage!), placeholderImage: UIImage(named: "placeholder.png"))
+        imageView.contentMode = .scaleAspectFit
         view.addSubview(imageView)
         self.navigationItem.titleView = view
         
@@ -198,6 +203,9 @@ extension FeedDetailsViewController: UICollectionViewDataSource, UICollectionVie
         self.tableView.scrollRectToVisible(CGRect(x: 0, y: 0, width: 1, height: 1), animated: true)
     }
     
+    @objc func triggerTouchAction() {
+       print("dime")
+    }
 }
 
 
