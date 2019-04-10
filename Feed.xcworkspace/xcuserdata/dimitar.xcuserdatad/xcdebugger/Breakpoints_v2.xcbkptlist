@@ -324,7 +324,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Feed/ViewControleers/ViewController.swift"
-            timestampString = "576623937.7375799"
+            timestampString = "576625628.246814"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "42"
@@ -340,11 +340,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Feed/ViewControleers/FeedDetails/FeedDetailsViewController.swift"
-            timestampString = "576623937.737752"
+            timestampString = "576626261.66654"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "204"
-            endingLineNumber = "204"
+            startingLineNumber = "192"
+            endingLineNumber = "192"
             landmarkName = "triggerTouchAction()"
             landmarkType = "7">
          </BreakpointContent>
@@ -356,12 +356,28 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Feed/ViewControleers/AllFeeds/AllFeedViewController.swift"
-            timestampString = "576623937.737868"
+            timestampString = "576626261.666602"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "99"
             endingLineNumber = "99"
             landmarkName = "updateSearchResults(for:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Feed/ViewControleers/FeedDetails/FeedDetailsViewController.swift"
+            timestampString = "576626261.666649"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "180"
+            endingLineNumber = "180"
+            landmarkName = "collectionView(_:didSelectItemAt:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

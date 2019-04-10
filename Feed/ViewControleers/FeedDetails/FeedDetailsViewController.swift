@@ -23,9 +23,9 @@ class FeedDetailsViewController: UIViewController , UITextFieldDelegate {
     var feedRealm = FeedRealm()
     
     let annotation = MKPointAnnotation()
-
+    
     let locationManager = CLLocationManager()
-
+    
     @IBOutlet var tableView: UITableView!
     @IBOutlet var headerView: UIView!
     @IBOutlet var colectionView: UICollectionView!
@@ -33,19 +33,9 @@ class FeedDetailsViewController: UIViewController , UITextFieldDelegate {
     @IBOutlet var feedImage: UIImageView!
     @IBOutlet var feedName: UITextField!
     @IBOutlet var artistImageView: UIImageView!
-    
-    
     @IBOutlet var lblArtistName: UILabel!
     @IBOutlet var lblDate: UILabel!
     @IBOutlet var lblLocation: UILabel!
-    
-    
-    
-    
-    
-    
-    
-    
     
     lazy var favoriteBarButton: UIBarButtonItem = {
         UIBarButtonItem.init(image: UIImage(named: "big"),
@@ -60,9 +50,9 @@ class FeedDetailsViewController: UIViewController , UITextFieldDelegate {
         self.hideKeyboardWhenTappedAround()
         
         feedName.delegate = self
-    
+        
         navigationItem.rightBarButtonItem = favoriteBarButton
-
+        
         changeBarButtonImage()
         
         colectionView.delegate = self
@@ -72,9 +62,10 @@ class FeedDetailsViewController: UIViewController , UITextFieldDelegate {
         
         setupView()
         
-        
         let gestureRecognizer = UITapGestureRecognizer(target: self, action:#selector(triggerTouchAction))
         mapView.addGestureRecognizer(gestureRecognizer)
+        
+
     }
     
     
@@ -90,15 +81,14 @@ class FeedDetailsViewController: UIViewController , UITextFieldDelegate {
         annotation.subtitle = feedRealm.venueName
         mapView.addAnnotation(annotation)
         
-
         title = "Feed Details"
         
         labels()
-
+        
         feedImage.sd_setImage(with: URL(string: feedRealm.venueImageUrl!), placeholderImage: UIImage(named: "placeholder.png"))
         
         
-          artistImageView.sd_setImage(with: URL(string: feedRealm.artistImage!), placeholderImage: UIImage(named: "placeholder.png"))
+        artistImageView.sd_setImage(with: URL(string: feedRealm.artistImage!), placeholderImage: UIImage(named: "placeholder.png"))
         
         artistImageView.layer.borderWidth = 1.0
         artistImageView.layer.masksToBounds = false
@@ -106,13 +96,11 @@ class FeedDetailsViewController: UIViewController , UITextFieldDelegate {
         artistImageView.layer.cornerRadius = artistImageView.frame.size.width / 2
         artistImageView.clipsToBounds = true
         
-        
-        
         feedName.text = feedRealm.venueName
-
+        
         colectionView.reloadData()
         
-        print(feedRealm)
+        debugPrint(feedRealm)
     }
     
     
@@ -128,7 +116,7 @@ class FeedDetailsViewController: UIViewController , UITextFieldDelegate {
                 feedRealm.venueName = textField.text
                 delegate?.updateFeedReloadData()
                 addObserverForReloadData()
-              //  label5.text = textField.text
+                //  label5.text = textField.text
                 annotation.subtitle = textField.text
             }
         }
@@ -155,10 +143,10 @@ class FeedDetailsViewController: UIViewController , UITextFieldDelegate {
     }
     
     func labels(){
-      lblArtistName.text = feedRealm.artistName
+        lblArtistName.text = feedRealm.artistName
         lblDate.text = feedRealm.eventDate! + " " + feedRealm.eventTime! + "h"
         lblLocation.text = feedRealm.venueCountry! + " , " + feedRealm.venueCity! + " , " + feedRealm.venueStreet!
-
+        
     }
 }
 // MARK: - UICollectionViewDataSource
@@ -191,7 +179,7 @@ extension FeedDetailsViewController: UICollectionViewDataSource, UICollectionVie
         let realm = try! Realm()
         let results = realm.objects(FeedRealm.self).filter("artistName == %@", feedRealm.artistName!)
         feedRealm = results[indexPath.row]
-         setupView()
+        setupView()
         scrollToFirstRow()
     }
     
@@ -201,7 +189,7 @@ extension FeedDetailsViewController: UICollectionViewDataSource, UICollectionVie
     }
     
     @objc func triggerTouchAction() {
-       print("dime")
+        print("dime")
     }
 }
 

@@ -11,7 +11,7 @@ import RealmSwift
 import SwiftyJSON
 import ProgressHUD
 
-class AllFeedViewController: UIViewController,UITableViewDataSource,UITableViewDelegate , UpdateFeed, AllFeedsView, UISearchResultsUpdating{
+class AllFeedViewController: UIViewController,UITableViewDataSource,UITableViewDelegate,UpdateFeed, AllFeedsView,UISearchResultsUpdating{
    
     @IBOutlet var tableView: UITableView!
 
@@ -48,9 +48,9 @@ class AllFeedViewController: UIViewController,UITableViewDataSource,UITableViewD
             self.tableView.tableHeaderView = controller.searchBar
             return controller
         })()
-      
+        
     }
-
+    
     func initPresenter() {
         let networkService = FeedNetworkService()
         let mockService = FeedMockupService()
@@ -122,6 +122,43 @@ class AllFeedViewController: UIViewController,UITableViewDataSource,UITableViewD
     func showActiviryIndicator(bool: Bool) {
         bool ? ProgressHUD.show() : ProgressHUD.dismiss()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardDidShow(with:)), name: UIResponder.keyboardDidShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(with:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardDidShowNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    @objc func keyboardDidShow(with notification: Notification) {
+        guard let userInfo = notification.userInfo as? [String: AnyObject],
+            let keyboardFrame = (userInfo[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue
+            else { return }
+        
+        var contentInset = self.tableView.contentInset
+        contentInset.bottom += keyboardFrame.height
+        
+        tableView.contentInset = contentInset
+        tableView.scrollIndicatorInsets = contentInset
+    }
+    
+    @objc func keyboardWillHide(with notification: Notification) {
+        guard let userInfo = notification.userInfo as? [String: AnyObject],
+            let keyboardFrame = (userInfo[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue
+            else { return }
+        
+        var contentInset = self.tableView.contentInset
+        contentInset.bottom -= keyboardFrame.height
+        
+        tableView.contentInset = contentInset
+        tableView.scrollIndicatorInsets = contentInset
+    }
+    
 }
 
 
