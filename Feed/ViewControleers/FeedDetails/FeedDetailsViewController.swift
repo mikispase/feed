@@ -150,6 +150,7 @@ class FeedDetailsViewController: UIViewController , UITextFieldDelegate {
     }
 }
 // MARK: - UICollectionViewDataSource
+
 extension FeedDetailsViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         let realm = try! Realm()

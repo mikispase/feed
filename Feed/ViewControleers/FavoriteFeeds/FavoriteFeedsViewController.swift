@@ -29,15 +29,13 @@ class FavoriteFeedsViewController: UIViewController,UITableViewDataSource,UITabl
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let realm = try! Realm()
-        let results = realm.objects(FeedRealm.self).filter("isMyFavorite == 'true'")
+        let results = filterMyFavoriteFeed()
         return results.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell =  tableView.dequeueReusableCell(withIdentifier: "FeedCell") as! FeedCell
-        let realm = try! Realm()
-        let results = realm.objects(FeedRealm.self).filter("isMyFavorite == 'true'")
+        let results = filterMyFavoriteFeed()
         cell.populateDataForCell(feeds: results[indexPath.row] as FeedRealm, indexPath: indexPath as NSIndexPath)
         cell.selectionStyle = .none
         return cell
@@ -48,9 +46,8 @@ class FavoriteFeedsViewController: UIViewController,UITableViewDataSource,UITabl
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let realm = try! Realm()
-        let results = realm.objects(FeedRealm.self).filter("isMyFavorite == 'true'")
         let vc = storyboard?.instantiateViewController(withIdentifier: "FeedDetailsViewController") as! FeedDetailsViewController
+        let results = filterMyFavoriteFeed()
         vc.feedRealm = results[indexPath.row]
         vc.delegate = self
         navigationController?.pushViewController(vc, animated: true)
@@ -60,7 +57,7 @@ class FavoriteFeedsViewController: UIViewController,UITableViewDataSource,UITabl
         if editingStyle == UITableViewCell.EditingStyle.delete {
             let realm = try! Realm()
             try! realm.write {
-                let results = realm.objects(FeedRealm.self).filter("isMyFavorite == 'true'")
+                let results = filterMyFavoriteFeed()
                 let feedRealm = results[indexPath.row]
                 feedRealm.isMyFavorite = "false"
                 tableView.deleteRows(at: [indexPath], with: UITableView.RowAnimation.automatic)
@@ -75,4 +72,11 @@ class FavoriteFeedsViewController: UIViewController,UITableViewDataSource,UITabl
     @objc func methodOfReceivedNotification(notification: Notification) {
         tableView.reloadData()
     }
+    
+    func filterMyFavoriteFeed() -> Results<FeedRealm>{
+        let realm = try! Realm()
+        let results = realm.objects(FeedRealm.self).filter("isMyFavorite == 'true'")
+        return results
+    }
+    
 }
