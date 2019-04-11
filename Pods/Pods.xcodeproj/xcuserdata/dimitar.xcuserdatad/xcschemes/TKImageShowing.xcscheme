@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "5F33242B95E436B642F7BA4D252831FD"
+               BlueprintIdentifier = "50ED6D5C55AC19897E832913DA4579AE"
                BlueprintName = "TKImageShowing"
                ReferencedContainer = "container:Pods.xcodeproj"
                BuildableName = "TKImageShowing.framework">

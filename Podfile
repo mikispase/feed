@@ -13,7 +13,8 @@ target 'Feed' do
    pod 'ProgressHUD'
    pod 'TKImageShowing'
    pod "KeyboardAvoidingView", '~> 4.0'
-   pod "ViewAnimator"
+
+
 
 
 end

@@ -331,10 +331,21 @@
                             <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
                             <textInputTraits key="textInputTraits"/>
                         </textField>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qy5-tM-4G9">
+                            <rect key="frame" x="171.5" y="440" width="34" height="34"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="34" id="WMk-Ga-efg"/>
+                            </constraints>
+                            <state key="normal" title="Button" image="Zoom-out-map-01.png"/>
+                            <connections>
+                                <action selector="presentFullMap:" destination="N46-2G-oBM" eventType="touchUpInside" id="VmW-rh-02h"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstItem="0Zq-QQ-I4h" firstAttribute="trailing" secondItem="ZBf-g3-kOX" secondAttribute="trailing" constant="16" id="1SC-mb-txg"/>
+                        <constraint firstItem="qy5-tM-4G9" firstAttribute="leading" secondItem="33c-nB-5kq" secondAttribute="trailing" constant="-32" id="1r5-B2-T4b"/>
                         <constraint firstItem="Jng-VE-Qen" firstAttribute="top" secondItem="ZBf-g3-kOX" secondAttribute="bottom" constant="8" id="2Vh-oE-7Eg"/>
                         <constraint firstItem="0Zq-QQ-I4h" firstAttribute="trailing" secondItem="1lu-D2-W8P" secondAttribute="trailing" constant="16" id="4Uh-G2-ggD"/>
                         <constraint firstItem="1lu-D2-W8P" firstAttribute="width" secondItem="33c-nB-5kq" secondAttribute="width" id="5eX-sf-qzI"/>
@@ -349,8 +360,10 @@
                         <constraint firstItem="0Zq-QQ-I4h" firstAttribute="trailing" secondItem="5KH-Me-ZyJ" secondAttribute="trailing" constant="16" id="IzD-g3-BCc"/>
                         <constraint firstItem="tnw-Mm-45l" firstAttribute="top" secondItem="bCO-dJ-avP" secondAttribute="bottom" constant="8" id="JG5-rU-Mpy"/>
                         <constraint firstItem="ZBf-g3-kOX" firstAttribute="leading" secondItem="0Zq-QQ-I4h" secondAttribute="leading" constant="16" id="KLb-XR-Bh5"/>
+                        <constraint firstItem="qy5-tM-4G9" firstAttribute="top" secondItem="33c-nB-5kq" secondAttribute="bottom" constant="-45" id="L0w-cZ-LXi"/>
                         <constraint firstItem="Jng-VE-Qen" firstAttribute="leading" secondItem="0Zq-QQ-I4h" secondAttribute="leading" constant="16" id="M0f-Nf-XB3"/>
                         <constraint firstItem="0Lg-Iu-dp6" firstAttribute="top" secondItem="GN2-OV-KSn" secondAttribute="bottom" constant="8" id="MDH-5c-sqa"/>
+                        <constraint firstItem="Rou-OR-I80" firstAttribute="top" secondItem="qy5-tM-4G9" secondAttribute="bottom" constant="27" id="O8b-Ri-1nN"/>
                         <constraint firstItem="33c-nB-5kq" firstAttribute="top" secondItem="GOy-Uf-wy1" secondAttribute="bottom" constant="8" id="SuA-rZ-X6C"/>
                         <constraint firstItem="wNZ-dg-d0y" firstAttribute="top" secondItem="5KH-Me-ZyJ" secondAttribute="bottom" id="TIG-Z5-05C"/>
                         <constraint firstItem="0Zq-QQ-I4h" firstAttribute="trailing" secondItem="GOy-Uf-wy1" secondAttribute="trailing" constant="16" id="UXX-GN-H41"/>
@@ -382,5 +395,38 @@
             </objects>
             <point key="canvasLocation" x="2776.8000000000002" y="54.679802955665025"/>
         </scene>
+        <!--Map View View Controller-->
+        <scene sceneID="b7W-IP-IBY">
+            <objects>
+                <viewController storyboardIdentifier="MapViewViewController" id="B11-OK-Rqn" customClass="MapViewViewController" customModule="Feed" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="UnW-XW-6NS">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="tqG-UG-vc2">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                            </mapView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="qAj-lb-JUi" firstAttribute="bottom" secondItem="tqG-UG-vc2" secondAttribute="bottom" id="I2D-Ja-h7X"/>
+                            <constraint firstItem="tqG-UG-vc2" firstAttribute="top" secondItem="qAj-lb-JUi" secondAttribute="top" id="Jkk-Uv-kAV"/>
+                            <constraint firstItem="qAj-lb-JUi" firstAttribute="trailing" secondItem="tqG-UG-vc2" secondAttribute="trailing" id="a7Z-Vn-ncL"/>
+                            <constraint firstItem="tqG-UG-vc2" firstAttribute="leading" secondItem="qAj-lb-JUi" secondAttribute="leading" id="x9J-eJ-exi"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="qAj-lb-JUi"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="HOv-KW-EXO"/>
+                    <connections>
+                        <outlet property="mapView" destination="tqG-UG-vc2" id="vnS-WU-ven"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BfP-UA-p52" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4587" y="-794"/>
+        </scene>
     </scenes>
+    <resources>
+        <image name="Zoom-out-map-01.png" width="96" height="96"/>
+    </resources>
 </document>

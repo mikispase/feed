@@ -15,6 +15,8 @@
 		436668F0225BBE5600F64CD1 /* FavoriteFeedsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 436668EF225BBE5600F64CD1 /* FavoriteFeedsViewController.swift */; };
 		436668F3225BC58100F64CD1 /* FeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 436668F1225BC58100F64CD1 /* FeedCell.swift */; };
 		436668F4225BC58100F64CD1 /* FeedCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 436668F2225BC58100F64CD1 /* FeedCell.xib */; };
+		4374DC37225F5D27000F5B1B /* MapViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4374DC36225F5D27000F5B1B /* MapViewViewController.swift */; };
+		4374DC3B225F6BCF000F5B1B /* Zoom-out-map-01.png in Resources */ = {isa = PBXBuildFile; fileRef = 4374DC3A225F6BCF000F5B1B /* Zoom-out-map-01.png */; };
 		43E3EB5E225B6DD200C78EB1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43E3EB5D225B6DD200C78EB1 /* AppDelegate.swift */; };
 		43E3EB60225B6DD200C78EB1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43E3EB5F225B6DD200C78EB1 /* ViewController.swift */; };
 		43E3EB63225B6DD200C78EB1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 43E3EB61225B6DD200C78EB1 /* Main.storyboard */; };
@@ -49,6 +51,8 @@
 		436668EF225BBE5600F64CD1 /* FavoriteFeedsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteFeedsViewController.swift; sourceTree = "<group>"; };
 		436668F1225BC58100F64CD1 /* FeedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCell.swift; sourceTree = "<group>"; };
 		436668F2225BC58100F64CD1 /* FeedCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FeedCell.xib; sourceTree = "<group>"; };
+		4374DC36225F5D27000F5B1B /* MapViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewViewController.swift; sourceTree = "<group>"; };
+		4374DC3A225F6BCF000F5B1B /* Zoom-out-map-01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Zoom-out-map-01.png"; sourceTree = "<group>"; };
 		43E3EB5A225B6DD200C78EB1 /* Feed.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Feed.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		43E3EB5D225B6DD200C78EB1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		43E3EB5F225B6DD200C78EB1 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -96,6 +100,14 @@
 			path = Database;
 			sourceTree = "<group>";
 		};
+		4374DC35225F5CFC000F5B1B /* MapViewController */ = {
+			isa = PBXGroup;
+			children = (
+				4374DC36225F5D27000F5B1B /* MapViewViewController.swift */,
+			);
+			path = MapViewController;
+			sourceTree = "<group>";
+		};
 		43E3EB51225B6DD200C78EB1 = {
 			isa = PBXGroup;
 			children = (
@@ -129,6 +141,7 @@
 				43E3EB84225B979F00C78EB1 /* json.json */,
 				43F70293225BFE0200F89B0F /* Extensions.swift */,
 				434A636B225CBF5A006A1FD0 /* placeholder.png */,
+				4374DC3A225F6BCF000F5B1B /* Zoom-out-map-01.png */,
 			);
 			path = Feed;
 			sourceTree = "<group>";
@@ -162,6 +175,7 @@
 		43F7028F225BFBC100F89B0F /* ViewControleers */ = {
 			isa = PBXGroup;
 			children = (
+				4374DC35225F5CFC000F5B1B /* MapViewController */,
 				43E3EB5F225B6DD200C78EB1 /* ViewController.swift */,
 				43F7028E225BFBAB00F89B0F /* FavoriteFeeds */,
 				43F7028D225BFB9D00F89B0F /* FeedDetails */,
@@ -320,6 +334,7 @@
 				43E3EB68225B6DD400C78EB1 /* Assets.xcassets in Resources */,
 				43E3EB63225B6DD200C78EB1 /* Main.storyboard in Resources */,
 				43E3EB85225B979F00C78EB1 /* json.json in Resources */,
+				4374DC3B225F6BCF000F5B1B /* Zoom-out-map-01.png in Resources */,
 				436668F4225BC58100F64CD1 /* FeedCell.xib in Resources */,
 				434A636C225CBF5A006A1FD0 /* placeholder.png in Resources */,
 			);
@@ -346,7 +361,6 @@
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 				"${BUILT_PRODUCTS_DIR}/TKImageShowing/TKImageShowing.framework",
-				"${BUILT_PRODUCTS_DIR}/ViewAnimator/ViewAnimator.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
@@ -361,7 +375,6 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TKImageShowing.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ViewAnimator.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -403,6 +416,7 @@
 				43F702AE225C1D7F00F89B0F /* ServerInvoker.swift in Sources */,
 				436668EE225BBE4300F64CD1 /* AllFeedViewController.swift in Sources */,
 				43E3EB66225B6DD200C78EB1 /* Feed.xcdatamodeld in Sources */,
+				4374DC37225F5D27000F5B1B /* MapViewViewController.swift in Sources */,
 				43F7029D225C030000F89B0F /* FeedRepoImplementation.swift in Sources */,
 				43F702A6225C04D800F89B0F /* FeedDataBaseService.swift in Sources */,
 				43F702A2225C03C300F89B0F /* FeedNetworkService.swift in Sources */,

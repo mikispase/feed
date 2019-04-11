@@ -180,7 +180,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Feed/Data/Repo/FeedRepo.swift"
-            timestampString = "576665992.084608"
+            timestampString = "576670153.910603"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "15"
@@ -196,7 +196,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Feed/ViewControleers/AllFeeds/AllFeedsContract.swift"
-            timestampString = "576665992.084674"
+            timestampString = "576670153.910728"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "20"
@@ -276,7 +276,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Feed/Data/Service/FeedNetworkService.swift"
-            timestampString = "576665992.084782"
+            timestampString = "576670153.91087"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "20"
@@ -292,7 +292,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Feed/Data/Service/FeedNetworkService.swift"
-            timestampString = "576665992.084831"
+            timestampString = "576670153.910935"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "28"
@@ -308,7 +308,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Feed/Data/Service/FeedNetworkService.swift"
-            timestampString = "576665992.084875"
+            timestampString = "576670153.911009"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "26"
@@ -339,24 +339,8 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Feed/ViewControleers/FeedDetails/FeedDetailsViewController.swift"
-            timestampString = "576665992.084942"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "193"
-            endingLineNumber = "193"
-            landmarkName = "triggerTouchAction()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "Feed/ViewControleers/AllFeeds/AllFeedViewController.swift"
-            timestampString = "576665992.084988"
+            timestampString = "576670153.911236"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "112"
@@ -372,13 +356,61 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Feed/ViewControleers/FeedDetails/FeedDetailsViewController.swift"
-            timestampString = "576665992.08535"
+            timestampString = "576679280.061452"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "181"
-            endingLineNumber = "181"
+            startingLineNumber = "188"
+            endingLineNumber = "188"
             landmarkName = "collectionView(_:didSelectItemAt:)"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Feed/ViewControleers/FeedDetails/FeedDetailsViewController.swift"
+            timestampString = "576679280.062032"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "152"
+            endingLineNumber = "152"
+            landmarkName = "presentFullMap(_:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Feed.FeedDetailsViewController.presentFullMap(__C.UIButton) -&gt; ()"
+                  moduleName = "Feed"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/dimitar/Desktop/Feed/Feed/ViewControleers/FeedDetails/FeedDetailsViewController.swift"
+                  timestampString = "576679202.503757"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "152"
+                  endingLineNumber = "152"
+                  offsetFromSymbolStart = "100">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Feed.FeedDetailsViewController.presentFullMap(__C.UIButton) -&gt; ()"
+                  moduleName = "Feed"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/dimitar/Desktop/Feed/Feed/ViewControleers/FeedDetails/FeedDetailsViewController.swift"
+                  timestampString = "576679202.505389"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "152"
+                  endingLineNumber = "152"
+                  offsetFromSymbolStart = "608">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

@@ -62,9 +62,6 @@ class FeedDetailsViewController: UIViewController , UITextFieldDelegate {
         
         setupView()
         
-        let gestureRecognizer = UITapGestureRecognizer(target: self, action:#selector(triggerTouchAction))
-        mapView.addGestureRecognizer(gestureRecognizer)
-        
     }
     
     
@@ -148,6 +145,14 @@ class FeedDetailsViewController: UIViewController , UITextFieldDelegate {
         lblLocation.text = feedRealm.venueCountry! + " , " + feedRealm.venueCity! + " , " + feedRealm.venueStreet!
         
     }
+    
+    @IBAction func presentFullMap(_ sender: UIButton) {
+        let vcMapView = storyboard?.instantiateViewController(withIdentifier: "MapViewViewController") as! MapViewViewController
+        vcMapView.feedRealm = feedRealm
+        let navigationController = UINavigationController(rootViewController: vcMapView)
+        present(navigationController, animated: true, completion: nil)
+    }
+    
 }
 // MARK: - UICollectionViewDataSource
 
@@ -188,12 +193,7 @@ extension FeedDetailsViewController: UICollectionViewDataSource, UICollectionVie
     func scrollToFirstRow() {
         self.tableView.scrollRectToVisible(CGRect(x: 0, y: 0, width: 1, height: 1), animated: true)
     }
-    
-    @objc func triggerTouchAction() {
-        print("dime")
-    }
-
- 
+     
 }
 
 
