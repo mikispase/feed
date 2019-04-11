@@ -13,4 +13,6 @@ import Foundation
 
 protocol FeedRepo {
     func getFeeds(onComplete:@escaping Completition, onError:@escaping ErrorComplete)
+    
+    func getFilteredFeeds(searchText: String, onComplete: @escaping Completition)
 }

@@ -13,9 +13,14 @@ import CoreData
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    var feedRepo : FeedRepo?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        let networkService = FeedNetworkService()
+        let mockService = FeedMockupService()
+        let databaseService = FeedDataBaseService()
+        
+        feedRepo = FeedRepoImplementation(mockupFeedService: mockService, networkeedSerice: networkService, databaseFeedSerice: databaseService)
         // Override point for customization after application launch.
         return true
     }

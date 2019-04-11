@@ -11,6 +11,7 @@ import RealmSwift
 import SwiftyJSON
 
 class FeedNetworkService : FeedService {
+  
    
     func getAllFeeds(onComplete: @escaping Completition, onError: @escaping ErrorComplete) {
         serverClientBaseAny(_url: SERVERBASEURL, params: nil, httpMethid: .get, onComplete: { (result) in
@@ -30,5 +31,10 @@ class FeedNetworkService : FeedService {
     
     func saveFeeds(feeds: Array<Feeds>, onComplete: @escaping Completition, onError: @escaping ErrorComplete) {
     }
+    
+    func getFilteredFeeds(searchText: String, onComplete: @escaping Completition) {
+    
+    }
+    
     
 }

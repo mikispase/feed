@@ -13,4 +13,7 @@ protocol FeedService {
     func getAllFeeds(onComplete: @escaping Completition, onError: @escaping ErrorComplete)
     
     func saveFeeds(feeds : Array<Feeds>, onComplete: @escaping Completition, onError: @escaping ErrorComplete)
+    
+    func getFilteredFeeds(searchText : String, onComplete: @escaping Completition)
+    
 }

@@ -10,7 +10,7 @@ import Foundation
 import RealmSwift
 
 class AllFeedPresenterImp : AllFeedPresenter {
-    
+  
     var view: AllFeedsView?
     
     var feedRepo:FeedRepo
@@ -31,6 +31,13 @@ class AllFeedPresenterImp : AllFeedPresenter {
             self.view?.showError(error: error)
         })
     }
+    
+    func getFilteredFeeds(searchText: String) {
+        feedRepo.getFilteredFeeds(searchText: searchText) { (feed) in
+            self.view?.showFilteredFeeds(feeds: feed as! Results<FeedRealm>)
+        }
+    }
+    
     
     func bindView(view: AllFeedsView) {
         self.view = view

@@ -11,7 +11,7 @@ import RealmSwift
 import SwiftyJSON
 
 class FeedMockupService: FeedService {
-   
+ 
     func getAllFeeds(onComplete: @escaping Completition, onError: @escaping ErrorComplete) {
         let realm = try! Realm()
         
@@ -71,5 +71,9 @@ class FeedMockupService: FeedService {
     func saveFeeds(feeds: Array<Feeds>, onComplete: @escaping Completition, onError: @escaping ErrorComplete) {
     }
 
+    func getFilteredFeeds(searchText: String, onComplete: @escaping Completition) {
+        
+    }
+    
     
 }

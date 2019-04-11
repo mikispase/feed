@@ -12,24 +12,24 @@ import SwiftyJSON
 import ProgressHUD
 
 class AllFeedViewController: UIViewController,UITableViewDataSource,UITableViewDelegate,UpdateFeed, AllFeedsView,UISearchResultsUpdating{
-   
+    
     @IBOutlet var tableView: UITableView!
-
+    
     var feeds: Results<FeedRealm>?
     
     var filteredFeed: Results<FeedRealm>?
-
+    
     var presenter: AllFeedPresenter?
     
     var resultSearchController = UISearchController()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         tableView.register(UINib(nibName: "FeedCell", bundle: nil), forCellReuseIdentifier: "FeedCell")
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.methodOfReceivedNotification(notification:)), name: Notification.Name("ReloadData"), object: nil)
-
+        
         initPresenter()
         
         presenter?.bindView(view: self)
@@ -39,26 +39,28 @@ class AllFeedViewController: UIViewController,UITableViewDataSource,UITableViewD
         tableView.estimatedRowHeight = 125
         
         self.resultSearchController = ({
-            let controller = UISearchController(searchResultsController: nil)
-            controller.searchResultsUpdater = self
-            controller.dimsBackgroundDuringPresentation = false
-            controller.searchBar.sizeToFit()
-            controller.searchBar.barTintColor = .white
-            controller.searchBar.backgroundColor = .clear
-            self.tableView.tableHeaderView = controller.searchBar
-            return controller
+            return createSearchController()
         })()
         
     }
     
     func initPresenter() {
-        let networkService = FeedNetworkService()
-        let mockService = FeedMockupService()
-        let databaseService = FeedDataBaseService()
-        
-        let weatherRepo = FeedRepoImplementation(mockupFeedService: mockService, networkeedSerice: networkService, databaseFeedSerice: databaseService)
-        presenter = AllFeedPresenterImp(feedRepo: weatherRepo)
+        let delegate = UIApplication.shared.delegate as! AppDelegate
+        presenter = AllFeedPresenterImp(feedRepo: delegate.feedRepo!)
     }
+    
+    
+    fileprivate func createSearchController() -> UISearchController {
+        let controller = UISearchController(searchResultsController: nil)
+        controller.searchResultsUpdater = self
+        controller.dimsBackgroundDuringPresentation = false
+        controller.searchBar.sizeToFit()
+        controller.searchBar.barTintColor = .white
+        controller.searchBar.backgroundColor = .clear
+        self.tableView.tableHeaderView = controller.searchBar
+        return controller
+    }
+    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if self.resultSearchController.isActive {
@@ -89,25 +91,25 @@ class AllFeedViewController: UIViewController,UITableViewDataSource,UITableViewD
         vc.delegate = self
         resultSearchController.isActive = false
         navigationController?.pushViewController(vc, animated: true)
-
     }
-
+    
     func updateSearchResults(for searchController: UISearchController) {
         print("updateSearchResults")
-        let realm = try! Realm()
-        let searchString = searchController.searchBar.text!
-        let results = realm.objects(FeedRealm.self).filter("venueName CONTAINS[c]'\(searchString)' OR eventDate CONTAINS[c]'\(searchString)' OR artistName CONTAINS[c]'\(searchString)'")
-        filteredFeed = results
-        self.tableView.reloadData()
+        presenter?.getFilteredFeeds(searchText: searchController.searchBar.text!)
+    }
+    
+    func showFilteredFeeds(feeds: Results<FeedRealm>) {
+        filteredFeed = feeds
+        updateFeedReloadData()
     }
     
     
     func updateFeedReloadData() {
-       self.tableView.reloadData()
+        self.tableView.reloadData()
     }
     
     @objc func methodOfReceivedNotification(notification: Notification) {
-       updateFeedReloadData()
+        updateFeedReloadData()
     }
     
     func showAllFeed(feeds: Results<FeedRealm>) {
@@ -139,10 +141,8 @@ class AllFeedViewController: UIViewController,UITableViewDataSource,UITableViewD
         guard let userInfo = notification.userInfo as? [String: AnyObject],
             let keyboardFrame = (userInfo[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue
             else { return }
-        
         var contentInset = self.tableView.contentInset
         contentInset.bottom += keyboardFrame.height
-        
         tableView.contentInset = contentInset
         tableView.scrollIndicatorInsets = contentInset
     }
@@ -151,16 +151,11 @@ class AllFeedViewController: UIViewController,UITableViewDataSource,UITableViewD
         guard let userInfo = notification.userInfo as? [String: AnyObject],
             let keyboardFrame = (userInfo[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue
             else { return }
-        
         var contentInset = self.tableView.contentInset
         contentInset.bottom -= keyboardFrame.height
-        
         tableView.contentInset = contentInset
         tableView.scrollIndicatorInsets = contentInset
     }
-    
-    
-    
 }
 
 
