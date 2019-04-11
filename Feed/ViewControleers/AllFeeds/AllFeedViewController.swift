@@ -23,6 +23,8 @@ class AllFeedViewController: UIViewController,UITableViewDataSource,UITableViewD
     
     var resultSearchController = UISearchController()
     
+    private let refreshControl = UIRefreshControl()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -41,6 +43,15 @@ class AllFeedViewController: UIViewController,UITableViewDataSource,UITableViewD
         self.resultSearchController = ({
             return createSearchController()
         })()
+        
+        // Add Refresh Control to Table View
+        if #available(iOS 10.0, *) {
+            tableView.refreshControl = refreshControl
+        } else {
+            tableView.addSubview(refreshControl)
+        }
+        refreshControl.addTarget(self, action: #selector(getRefreshDataFromServer(_:)), for: .valueChanged)
+
         
     }
     
@@ -61,6 +72,9 @@ class AllFeedViewController: UIViewController,UITableViewDataSource,UITableViewD
         return controller
     }
     
+    @objc private func getRefreshDataFromServer(_ sender: Any) {
+        presenter?.getAllFeeds(forceGet: true)
+    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if self.resultSearchController.isActive {
@@ -122,7 +136,12 @@ class AllFeedViewController: UIViewController,UITableViewDataSource,UITableViewD
     }
     
     func showActiviryIndicator(bool: Bool) {
-        bool ? ProgressHUD.show() : ProgressHUD.dismiss()
+        if self.refreshControl.isRefreshing == false {
+            bool ? ProgressHUD.show() : ProgressHUD.dismiss()
+        }
+        else {
+            bool ?  self.refreshControl.beginRefreshing() : self.refreshControl.endRefreshing()
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
