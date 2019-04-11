@@ -65,7 +65,6 @@ class FeedDetailsViewController: UIViewController , UITextFieldDelegate {
         let gestureRecognizer = UITapGestureRecognizer(target: self, action:#selector(triggerTouchAction))
         mapView.addGestureRecognizer(gestureRecognizer)
         
-
     }
     
     
@@ -101,6 +100,7 @@ class FeedDetailsViewController: UIViewController , UITextFieldDelegate {
         colectionView.reloadData()
         
         debugPrint(feedRealm)
+        
     }
     
     
@@ -191,6 +191,8 @@ extension FeedDetailsViewController: UICollectionViewDataSource, UICollectionVie
     @objc func triggerTouchAction() {
         print("dime")
     }
+
+ 
 }
 
 

@@ -201,20 +201,20 @@
                                         <autoresizingMask key="autoresizingMask"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="21/11/1987" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Te-2s-Ck4">
-                                                <rect key="frame" x="0.0" y="5" width="114" height="20"/>
+                                                <rect key="frame" x="0.0" y="5" width="114" height="8"/>
                                                 <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="11"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="f5Z-Mi-P2q">
-                                                <rect key="frame" x="30" y="33" width="54" height="54"/>
+                                                <rect key="frame" x="30" y="21" width="54" height="54"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="54" id="E7V-jz-HQL"/>
                                                     <constraint firstAttribute="width" constant="54" id="tqk-sw-9Yo"/>
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tbY-JN-DI1">
-                                                <rect key="frame" x="0.0" y="87" width="114" height="20"/>
+                                                <rect key="frame" x="0.0" y="75" width="114" height="32"/>
                                                 <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="11"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -225,7 +225,7 @@
                                         <constraint firstItem="tbY-JN-DI1" firstAttribute="top" secondItem="f5Z-Mi-P2q" secondAttribute="bottom" id="BqD-tN-Fq1"/>
                                         <constraint firstItem="f5Z-Mi-P2q" firstAttribute="centerX" secondItem="RI1-Q7-vQQ" secondAttribute="centerX" id="HvZ-Pb-X6d"/>
                                         <constraint firstItem="f5Z-Mi-P2q" firstAttribute="top" secondItem="0Te-2s-Ck4" secondAttribute="bottom" constant="8" id="Uqt-wd-Itx"/>
-                                        <constraint firstAttribute="bottom" secondItem="f5Z-Mi-P2q" secondAttribute="bottom" constant="20" id="YEg-Eu-0gX"/>
+                                        <constraint firstAttribute="bottom" secondItem="f5Z-Mi-P2q" secondAttribute="bottom" constant="32" id="YEg-Eu-0gX"/>
                                         <constraint firstItem="0Te-2s-Ck4" firstAttribute="top" secondItem="RI1-Q7-vQQ" secondAttribute="top" constant="5" id="g4n-zA-esm"/>
                                         <constraint firstItem="tbY-JN-DI1" firstAttribute="leading" secondItem="RI1-Q7-vQQ" secondAttribute="leading" id="iAL-Hn-svP"/>
                                         <constraint firstItem="0Te-2s-Ck4" firstAttribute="leading" secondItem="RI1-Q7-vQQ" secondAttribute="leading" id="jZK-i2-DJc"/>
@@ -233,6 +233,17 @@
                                         <constraint firstAttribute="trailing" secondItem="0Te-2s-Ck4" secondAttribute="trailing" id="rc8-lQ-2zs"/>
                                         <constraint firstAttribute="bottom" secondItem="tbY-JN-DI1" secondAttribute="bottom" id="xIB-tR-pm3"/>
                                     </constraints>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                            <color key="value" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                            <real key="value" value="0.5"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                            <real key="value" value="0.5"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
                                     <connections>
                                         <outlet property="imageViewArtist" destination="f5Z-Mi-P2q" id="XhQ-UR-Oe6"/>
                                         <outlet property="nameArtist" destination="0Te-2s-Ck4" id="JDL-sS-2E7"/>
@@ -247,7 +258,7 @@
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="tnw-Mm-45l">
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="tnw-Mm-45l" customClass="TKImageView" customModule="TKImageShowing">
                             <rect key="frame" x="16" y="92" width="50" height="50"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="50" id="El8-Rv-Zzc"/>
@@ -308,7 +319,7 @@
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.59999999999999998" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1lu-D2-W8P">
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.59999999999999998" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1lu-D2-W8P" customClass="TKImageView" customModule="TKImageShowing">
                             <rect key="frame" x="211.5" y="285" width="187.5" height="200"/>
                         </imageView>
                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="t0Y-qY-Qr1">

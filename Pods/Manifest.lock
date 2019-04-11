@@ -13,6 +13,9 @@ PODS:
     - SDWebImage/Core (= 4.4.6)
   - SDWebImage/Core (4.4.6)
   - SwiftyJSON (4.2.0)
+  - TKImageShowing (1.0.9):
+    - SDWebImage (~> 4.4.6)
+  - ViewAnimator (2.4.0)
 
 DEPENDENCIES:
   - Alamofire (~> 4.7)
@@ -21,6 +24,8 @@ DEPENDENCIES:
   - RealmSwift
   - SDWebImage
   - SwiftyJSON (~> 4.0)
+  - TKImageShowing
+  - ViewAnimator
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -32,6 +37,8 @@ SPEC REPOS:
     - RealmSwift
     - SDWebImage
     - SwiftyJSON
+    - TKImageShowing
+    - ViewAnimator
 
 SPEC CHECKSUMS:
   Alamofire: ae5c501addb7afdbb13687d7f2f722c78734c2d3
@@ -42,7 +49,9 @@ SPEC CHECKSUMS:
   RealmSwift: 28f22dfa6a27b9a778cfb09471558b6afcf1022c
   SDWebImage: 3f3f0c02f09798048c47a5ed0a13f17b063572d8
   SwiftyJSON: c4bcba26dd9ec7a027fc8eade48e2c911f229e96
+  TKImageShowing: a9c18c82070d1fe8aec59fd29533e2c5c29ca1e2
+  ViewAnimator: 28b9ef703e280a02852b1271ef36295ea96eae4b
 
-PODFILE CHECKSUM: b0d73b96755c81014f9182b049d898ba99d8770e
+PODFILE CHECKSUM: 36e329ca8ac88d461a684485ddaa4eb8bb3cb827
 
 COCOAPODS: 1.6.0.beta.2
